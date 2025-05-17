@@ -1,2 +1,7 @@
-npm run dev // npm start
-npx tsc --watch
+
+inicializar el servidor
+consola 1: npm run dev // npm start
+consola 2: npx tsc --watch
+
+Crear BD con el nombre api-castores 
+en caso de modificar las credenciales checar el connection.ts
