@@ -1,2 +1,2 @@
-npm run dev
-npm run typescript
+npm run dev // npm start
+npx tsc --watch

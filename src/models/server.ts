@@ -2,9 +2,12 @@ import express, { Application } from "express";
 import sequelize from "../database/connection";
 import RUser from "../routes/users";
 import RProduct from "../routes/products";
+import RYouTube from "../routes/youtubeController";
+import RPlaylist from "../routes/favorite";
 import { User } from "./users";
 import { Product } from "./products";
 import cors from "cors";
+import { favorite } from "./favorite";
 
 class Server {
   private app: Application;
@@ -28,6 +31,8 @@ class Server {
   router() {
     this.app.use(RUser);
     this.app.use(RProduct);
+    this.app.use(RYouTube);
+    this.app.use(RPlaylist);
   }
 
   midlewares() {
@@ -40,6 +45,7 @@ class Server {
     try {
       await User.sync();
       await Product.sync();
+      await favorite.sync();
     //   console.log("Conexión exitosa");
     } catch (error) {
       console.log("Error al conectar: ", error);
@@ -48,3 +54,4 @@ class Server {
 }
 
 export default Server;
+

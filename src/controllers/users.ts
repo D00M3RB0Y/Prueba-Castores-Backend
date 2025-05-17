@@ -64,6 +64,8 @@ export const login = async (req: Request, res: Response) => {
     }, process.env.SECRET_KEY || 'Doomer-@2003');
 
     res.json({
-        token
+        token,
+        username: user.username,
+        id: user.id
     })
 };

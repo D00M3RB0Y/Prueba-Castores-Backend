@@ -67,7 +67,9 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
         email: email
     }, process.env.SECRET_KEY || 'Doomer-@2003');
     res.json({
-        token
+        token,
+        username: user.username,
+        id: user.id
     });
 });
 exports.login = login;

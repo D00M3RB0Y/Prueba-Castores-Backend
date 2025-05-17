@@ -15,9 +15,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const users_1 = __importDefault(require("../routes/users"));
 const products_1 = __importDefault(require("../routes/products"));
+const youtubeController_1 = __importDefault(require("../routes/youtubeController"));
+const favorite_1 = __importDefault(require("../routes/favorite"));
 const users_2 = require("./users");
 const products_2 = require("./products");
 const cors_1 = __importDefault(require("cors"));
+const favorite_2 = require("./favorite");
 class Server {
     constructor() {
         this.app = (0, express_1.default)();
@@ -35,6 +38,8 @@ class Server {
     router() {
         this.app.use(users_1.default);
         this.app.use(products_1.default);
+        this.app.use(youtubeController_1.default);
+        this.app.use(favorite_1.default);
     }
     midlewares() {
         this.app.use(express_1.default.json());
@@ -45,6 +50,7 @@ class Server {
             try {
                 yield users_2.User.sync();
                 yield products_2.Product.sync();
+                yield favorite_2.favorite.sync();
                 //   console.log("Conexión exitosa");
             }
             catch (error) {
